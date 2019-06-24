@@ -16,9 +16,14 @@ export class Fireworks extends React.Component<FireworksProps> {
   // A check if the browser is idle to decide if fireworks
   // re-render should be attempted.
   _idle = false
+  // Reference to the base HTML element
+  _ref: HTMLElement | null = null
 
   render() {
-    return React.createElement('div', { className: 'react-fireworks' })
+    return React.createElement('div', {
+      ref: ref => (this._ref = ref),
+      className: 'react-fireworks'
+    })
   }
 
   componentDidMount() {
@@ -26,12 +31,8 @@ export class Fireworks extends React.Component<FireworksProps> {
     let { interval } = this.props
 
     if (interval) {
-      let ivlDuration = 500
-
-      if (typeof interval !== 'boolean') {
-        ivlDuration = interval
-      }
-
+      // TODO: check if tab is idle
+      //
       // window.requestIdleCallback(function() {
       //   self.onIdle()
       // })
@@ -40,7 +41,9 @@ export class Fireworks extends React.Component<FireworksProps> {
         if (self._idle) return
 
         self.evaluate()
-      }, ivlDuration)
+      }, interval)
+
+      this.evaluate()
     } else {
       this.evaluate()
     }
@@ -57,11 +60,17 @@ export class Fireworks extends React.Component<FireworksProps> {
   }
 
   evaluate() {
-    console.log('evaluate')
     let { count, calc, interval, ...props } = this.props
+    let input = props as FireworksInput
+
+    if (!input.parentNode) {
+      if (this._ref) {
+        input.parentNode = this._ref
+      }
+    }
 
     for (let i = 0; i < (count || 1); i++) {
-      fx(calc ? calc(props, i) : (props as FireworksInput))
+      fx(calc ? calc(props, i) : input)
     }
   }
 }

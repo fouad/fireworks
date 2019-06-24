@@ -72,9 +72,9 @@ export function fireworks(opts: FireworksInput) {
 
   render(cvs.width, cvs.height, particles, ctx)
 
-  // setTimeout(function() {
-  //   parentNode.removeChild(cvs)
-  // }, 1000)
+  setTimeout(function() {
+    parentNode.removeChild(cvs)
+  }, 1000)
 }
 
 function render(
