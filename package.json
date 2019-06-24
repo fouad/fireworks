@@ -1,0 +1,30 @@
+{
+  "name": "fireworks",
+  "description": "A simple fireworks library with exploding bubbles.",
+  "version": "2.2.2",
+  "main": "lib/fireworks.js",
+  "license": "MIT",
+  "author": "Fouad Matin <m@fouad.org>",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "clean": "rimraf lib",
+    "preview": "parcel test/*.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fouad/fireworks.git"
+  },
+  "optionalDependencies": {
+    "@types/react": "^16.8.22",
+    "react": "^16.8.6"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3",
+    "rimraf": "^2.6.3",
+    "typescript": "^3.5.2"
+  }
+}
