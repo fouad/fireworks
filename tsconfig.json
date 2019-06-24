@@ -3,12 +3,11 @@
     "strict": true,
     "outDir": "lib",
     "target": "es2015",
-    "module": "esnext",
+    "module": "commonjs",
     "declaration": true,
     "removeComments": true,
     "esModuleInterop": true,
     "noUnusedLocals": false,
-    "lib": ["esnext", "dom"],
     "noImplicitReturns": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
@@ -16,7 +15,8 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "noFallthroughCasesInSwitch": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "lib": ["es2017", "es7", "es6", "dom"]
   },
   "include": ["src"],
   "exclude": ["node_modules"]
