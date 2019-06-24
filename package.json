@@ -1,7 +1,7 @@
 {
   "name": "fireworks",
   "description": "A simple fireworks library with exploding bubbles.",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "main": "lib/fireworks.js",
   "license": "MIT",
   "author": "Fouad Matin <m@fouad.org>",
