@@ -3,6 +3,15 @@ export type FireworksInput = {
   y: number
   count?: number
   colors?: string[]
+  canvasWidth?: number
+  canvasHeight?: number
+  canvasTopOffset?: number
+  canvasLeftOffset?: number
+  bubbleSizeMinimum?: number
+  bubbleSizeMaximum?: number
+  bubbleSpeedMinimum?: number
+  bubbleSpeedMaximum?: number
+  particleTimeout?: number
   parentNode?: HTMLElement
 }
 
@@ -21,60 +30,75 @@ export type Particle = {
 
 export default fireworks
 
+const defaultColors = ['#2d80ee', '#1b4e8f', '#112e55']
+
 export function fireworks(opts: FireworksInput) {
   if (!opts) {
     throw new Error('Missing options for fireworks')
   }
 
-  let {
+  const {
     x,
     y,
-    colors = [],
+    canvasWidth = 300,
+    canvasHeight = 300,
+    particleTimeout = 1000,
+    colors = defaultColors,
+    bubbleSizeMinimum = 10,
+    bubbleSizeMaximum = 25,
+    bubbleSpeedMinimum = 6,
+    bubbleSpeedMaximum = 10,
     count: bubbleCount = 25,
+    canvasLeftOffset = canvasWidth / 2,
+    canvasTopOffset = canvasHeight / 2,
     parentNode = document.body
   } = opts
-
-  let particles = []
-  let ratio = window.devicePixelRatio
-  let cvs = document.createElement('canvas')
-  let ctx = cvs.getContext('2d')
-
+  
+  const ratio = window.devicePixelRatio
+  const cvs = document.createElement('canvas')
+  const ctx = cvs.getContext('2d')
+  
+  
   if (!ctx) {
     console.log(`fireworks: unable to get 2d canvas context`)
     return
   }
-
-  cvs.style.position = 'absolute'
-  cvs.style.left = `${x - 150}px`
-  cvs.style.top = `${y - 150}px`
-  cvs.style.pointerEvents = 'none'
-  cvs.style.width = `${300}px`
-  cvs.style.height = `${300}px`
+  
   cvs.style.zIndex = '100'
-  cvs.width = 300 * ratio
-  cvs.height = 300 * ratio
+  cvs.style.position = 'absolute'
+  cvs.style.pointerEvents = 'none'
+  cvs.style.top = `${y - canvasTopOffset}px`
+  cvs.style.left = `${x - canvasLeftOffset}px`
+  cvs.style.height = `${canvasHeight}px`
+  cvs.style.width = `${canvasWidth}px`
+  cvs.height = canvasHeight * ratio
+  cvs.width = canvasWidth * ratio
   parentNode.appendChild(cvs)
+  
+  let particles = []
 
   for (let i = 0; i < bubbleCount; i++) {
     particles.push({
       x: cvs.width / 2,
       y: cvs.height / 2,
-      radius: randomRange(10, 25),
       color: colors[Math.floor(Math.random() * colors.length)],
+      radius: randomRange(bubbleSizeMinimum, bubbleSizeMaximum),
+      speed: randomRange(bubbleSpeedMinimum, bubbleSpeedMaximum),
       rotation: randomRange(0, 360, -1),
-      speed: randomRange(6, 10),
-      friction: 0.96,
       opacity: randomRange(0, 0.5, -1),
+      friction: 0.96,
+      gravity: 0.05,
       yVel: 0,
-      gravity: 0.05
     })
   }
+
+  console.table(particles)
 
   render(cvs.width, cvs.height, particles, ctx)
 
   setTimeout(function() {
     parentNode.removeChild(cvs)
-  }, 1000)
+  }, particleTimeout)
 }
 
 function render(

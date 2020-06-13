@@ -21,10 +21,21 @@
 import fx from 'fireworks'
 
 fx({
-  x: number
-  y: number
+  x: number // required
+  y: number // required
+
+  // optional
   count?: number
   colors?: string[]
+  canvasWidth?: number
+  canvasHeight?: number
+  canvasTopOffset?: number
+  canvasLeftOffset?: number
+  bubbleSizeMinimum?: number
+  bubbleSizeMaximum?: number
+  bubbleSpeedMinimum?: number
+  bubbleSpeedMaximum?: number
+  particleTimeout?: number
   parentNode?: HTMLElement
 })
 ```
