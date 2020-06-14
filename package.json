@@ -1,7 +1,7 @@
 {
   "name": "fireworks",
   "description": "A simple fireworks library with exploding bubbles.",
-  "version": "2.2.5",
+  "version": "2.2.6",
   "module": "./lib/fireworks.js",
   "types": "./lib/fireworks.d.ts",
   "license": "MIT",

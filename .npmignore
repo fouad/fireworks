@@ -1,0 +1,12 @@
+# Dependencies
+node_modules
+
+# Temporary files
+*.log
+.cache
+.DS_Store
+dist
+
+# Lockfiles
+yarn.lock
+package-lock.json
