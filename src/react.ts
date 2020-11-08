@@ -1,12 +1,12 @@
 import * as React from 'react'
 import fx, { FireworksInput } from './fireworks'
 
-type FireworksProps = {
-  // Interval in milliseconds for how often new fireworks get rendered
+export type FireworksProps = {
+  /** Interval in milliseconds for how often new fireworks get rendered */
   interval?: number
-  // Count of the fireworks that are rendered concurrently
+  /** Count of the fireworks that are rendered concurrently */
   count?: number
-  // Calc is a function that can be evaluated to generate `FireworksInput`
+  /** Calc is a function that can be evaluated to generate `FireworksInput` */
   calc?: (input: any, index: number) => FireworksInput
 }
 
