@@ -92,8 +92,6 @@ export function fireworks(opts: FireworksInput) {
     })
   }
 
-  console.table(particles)
-
   render(cvs.width, cvs.height, particles, ctx)
 
   setTimeout(function() {

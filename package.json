@@ -13,19 +13,20 @@
     "build": "tsc",
     "watch": "tsc -w",
     "clean": "rimraf lib",
-    "preview": "parcel test/*.html"
+    "serve": "parcel serve test/*.html"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fouad/fireworks.git"
   },
-  "optionalDependencies": {
-    "@types/react": "^16.8.22",
-    "react": "^16.8.6"
+  "peerDependencies": {
+    "@types/react": ">=16.8.0",
+    "react": ">=16.8.0"
   },
   "devDependencies": {
-    "parcel-bundler": "^1.12.3",
+    "parcel": "^2.0.0-beta.1",
     "rimraf": "^2.6.3",
     "typescript": "^3.5.2"
-  }
+  },
+  "dependencies": {}
 }

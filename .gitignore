@@ -4,10 +4,10 @@ node_modules
 # Temporary files
 *.log
 .cache
+.parcel-cache
 .DS_Store
 dist
 lib
 
 # Lockfiles
 yarn.lock
-package-lock.json
