@@ -12,7 +12,7 @@
 <br/>
 
 <p align="center">
-  <a href="https://unpkg.com/fireworks@latest/lib/fireworks.js"><img src="https://img.badgesize.io/https://unpkg.com/fireworks@^2.2.2/lib/fireworks.js?compression=gzip&amp;label=fireworks"></a>
+  <a href="https://unpkg.com/fireworks@^2.2.7/lib/fireworks.js"><img src="https://img.badgesize.io/https://unpkg.com/fireworks@^2.2.7/lib/fireworks.js?compression=gzip&amp;label=fireworks"></a>
   <a href="https://www.npmjs.com/package/fireworks"><img src="https://img.shields.io/npm/v/fireworks.svg?maxAge=3600&label=fireworks&colorB=007ec6"></a>
 </p>
 <br/>

@@ -21,7 +21,7 @@ export class Fireworks extends React.Component<FireworksProps> {
 
   render() {
     return React.createElement('div', {
-      ref: ref => (this._ref = ref),
+      ref: (ref: HTMLElement) => (this._ref = ref),
       className: 'react-fireworks'
     })
   }
@@ -62,13 +62,11 @@ export class Fireworks extends React.Component<FireworksProps> {
   evaluate() {
     let { count, calc, interval, ...props } = this.props
     let input = props as FireworksInput
-
     if (!input.parentNode) {
       if (this._ref) {
         input.parentNode = this._ref
       }
     }
-
     for (let i = 0; i < (count || 1); i++) {
       fx(calc ? calc(props, i) : input)
     }

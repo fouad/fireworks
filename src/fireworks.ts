@@ -58,7 +58,6 @@ export function fireworks(opts: FireworksInput) {
   const cvs = document.createElement('canvas')
   const ctx = cvs.getContext('2d')
   
-  
   if (!ctx) {
     console.log(`fireworks: unable to get 2d canvas context`)
     return
